@@ -27,13 +27,14 @@ The `index_dict.json` contains information on where weights in the vectorized fo
 We provide a custom pytorch dataset class to load and preprocess the raw model zoos. Code related to the dataset class is in the module `code/checkpoints_to_datasets/`. The class definition can be found under `dataset_base.py`.
 The class takes care of loading the model checkpoints and their properties, if necessary vectorizing their weights, and sorting out models with faulty data.
 We further provide pre-computed dataset files, with train, test and validation datasets.
-To further simplify access to the datasets, a jupyter notebook `code/load_dataset.ipynb` contains examples of loading preprocessed or raw datasets and explores their properties.  A conda `environmnent.yml` to create a working conda environment can be found in `code/`.
+To further simplify access to the datasets, a jupyter notebook `code/load_dataset.ipynb` contains examples of loading preprocessed or raw datasets and explores their properties.   
+A conda `environmnent.yml` to create a working `conda` environment can be found in `code/`. With `conda` installed, run `conda env create -f code/environment.yml` to create the environment. 
 
 # Zoo Generation
 The scripts to generate the model zoos can be found under `code/zoo_generators/`. 
 With these scripts, the zoos can be rectreated, adapted or extended. 
 The class definition for the models in the zoo is contained in `code/model_definitions/def_net.py`. 
-We use [ray tune](#https://docs.ray.io/en/latest/tune/index.html) in version 1.8.0 to train populations. The `tune.trainable` class wrapper around the model is in `code/model_definitions/def_NN_experiment.py`. We provide a conda `environmnent.yml` to recreate the exact package versions.
+We use [ray tune](#https://docs.ray.io/en/latest/tune/index.html) in version 1.8.0 to train populations. The `tune.trainable` class wrapper around the model is in `code/model_definitions/def_NN_experiment.py`.
 
 # Benchmark Results
 A notebook with code to replicate the benchmark numbers from the paper can be found in `code/benchmark_results.ipynb`. The benchmark classes are located in `code/model_definitions/def_downstream_module.py` and `code/model_definitions/def_baseline_models.py`.  
