@@ -15,13 +15,17 @@ The `index_dict.json` contains information on where weights in the vectorized fo
 
 | Image Dataset | DOI Link to Zoo  |  
 | ----------- | ----------- |
-| MNIST | https://doi.org/10.5281/zenodo.6632086 |  
-| Fashion-MNIST | https://doi.org/10.5281/zenodo.6632104 |   
-| SVHN | https://doi.org/10.5281/zenodo.6632120 |  
-| USPS | https://doi.org/10.5281/zenodo.6633626 |  
-| Cifar10 | https://doi.org/10.5281/zenodo.6620868 |  
+| MNIST (raw and prepocessed)| https://doi.org/10.5281/zenodo.6632086 |  
+| Fashion-MNIST (raw and prepocessed)| https://doi.org/10.5281/zenodo.6632104 |   
+| SVHN (raw and prepocessed)| https://doi.org/10.5281/zenodo.6632120 |  
+| USPS (raw and prepocessed)| https://doi.org/10.5281/zenodo.6633626 |  
+| Cifar10 (raw and prepocessed)| https://doi.org/10.5281/zenodo.6620868 |  
 | STL10 (raw) | https://doi.org/10.5281/zenodo.6631783 |  
 | STL10 (preprocessed) | https://doi.org/10.5281/zenodo.6634138 | 
+| CIFAR10-ResNet18 (raw, squeezed) | [GoogleDrive](https://drive.google.com/file/d/1KeeEIvjwPvZW6i3fhc_TenmSO8I8rAfX/view?usp=sharing) (zenodo upload pending) |
+| CIFAR10-ResNet18 (raw, full) | [GoogleDrive](https://drive.google.com/drive/folders/1XRdSeDJ05-_pjMapaDpphMjecqqzMsVO?usp=sharing) |
+
+
 
 # Accessibility
 We provide a custom pytorch dataset class to load and preprocess the raw model zoos. Code related to the dataset class is in the module `code/checkpoints_to_datasets/`. The class definition can be found under `dataset_base.py`.
