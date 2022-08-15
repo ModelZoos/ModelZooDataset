@@ -22,7 +22,7 @@ The `index_dict.json` contains information on where weights in the vectorized fo
 | Cifar10 (raw and prepocessed)| https://doi.org/10.5281/zenodo.6620868 |  
 | STL10 (raw) | https://doi.org/10.5281/zenodo.6631783 |  
 | STL10 (preprocessed) | https://doi.org/10.5281/zenodo.6634138 | 
-| CIFAR10-ResNet18 (raw, squeezed) | [GoogleDrive](https://drive.google.com/file/d/1KeeEIvjwPvZW6i3fhc_TenmSO8I8rAfX/view?usp=sharing) (Zenodo upload pending) |
+| CIFAR10-ResNet18 (raw, squeezed) | https://doi.org/10.5281/zenodo.6974028 |
 | CIFAR10-ResNet18 (raw, full) | [GoogleDrive](https://drive.google.com/drive/folders/1XRdSeDJ05-_pjMapaDpphMjecqqzMsVO?usp=sharing) |
 
 
