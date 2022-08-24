@@ -23,8 +23,7 @@ The `index_dict.json` contains information on where weights in the vectorized fo
 | STL10 (raw) | https://doi.org/10.5281/zenodo.6631783 |  
 | STL10 (preprocessed) | https://doi.org/10.5281/zenodo.6634138 | 
 | CIFAR10-ResNet18 (raw, squeezed) | https://doi.org/10.5281/zenodo.6974028 |
-| CIFAR10-ResNet18 (raw, full) | [GoogleDrive](https://drive.google.com/drive/folders/1XRdSeDJ05-_pjMapaDpphMjecqqzMsVO?usp=sharing) |
-
+| CIFAR10-ResNet18 (raw, full) | Google Drive [part 1](https://drive.google.com/file/d/1f3RJn2Ku_y22TRZsrJs9sFDcqfYu8p6k/view?usp=sharing) [part 2](https://drive.google.com/file/d/1PgMd708E5jRC52on-4_hABUr0PXPBWIR/view?usp=sharing) [part 3](https://drive.google.com/file/d/1q1C1cE_gAvMZGNWzfaW2szUL_r1jNj-P/view?usp=sharing) [part 4](https://drive.google.com/file/d/1nQKu4IEDHKaT2nxiwF13iEwnQEzOvb1O/view?usp=sharing) [part 5](https://drive.google.com/file/d/1EX7KtgcrfA3EGjPrmiSvm6T4lCBSjVL6/view?usp=sharing) [part 6](https://drive.google.com/file/d/12YxDbpKX4s2-0szKnhdCFucqor-tsWWL/view?usp=sharing) [part 7](https://drive.google.com/file/d/1qF2iqOY99kx3wbJMygI-x5WsiGoRgHzd/view?usp=sharing) [part 8](https://drive.google.com/file/d/1t_xp5hKmbanWFPlqqWXs0LwZfhclJ9UK/view?usp=sharing) [part 9](https://drive.google.com/file/d/1yXaKJgiJF4EOBgHysWPHIvrr-Z3HyET4/view?usp=sharing) [part 10](https://drive.google.com/file/d/19tZuuseCjIlKcK4707OHQCA3PsbCdBz8/view?usp=sharing)|
 
 
 # Accessibility
