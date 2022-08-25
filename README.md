@@ -32,7 +32,7 @@ The `index_dict.json` contains information on where weights in the vectorized fo
 Model sparsification and distillation are an important topic to efficiently operate neural networks in production. To study sparisifaction at a population level, we introduce *sparsified model zoo twins*.  
 Re-using the populations of full models (from above), the sparsified populations contain *sparsified twins* of each of the full models. 
 Starting of the last epoch of the full zoo, sparsification with [Variational Dropout](https://arxiv.org/abs/1701.05369) generates a sparsification trajectory for each model, along which we track the performance, degree of sparsity and the sparsified checkpoint.  Sparsified model zoos add several potential use-cases. The zoos can be used to study the sparsification performance on a population level, study emerging patterns of populations of sparse models, or the relation of full models and their sparse counterparts.   
-The Figure below shows the performance of the first sparsified zoo (MNIST-seed-sparse) is already added to the collection. After 25 sparsification epochs, the models achieve on average 80% sparsity at only 2% accuracy loss.
+The Figure below shows the performance of the first sparsified zoo (MNIST Sparsified CNN-s) is already added to the collection. After 25 sparsification epochs, the models achieve on average 80% sparsity at only 2% accuracy loss.
 ![MNIST Sparsified Twin Zoo](assets/MNIST_Sparse_Twin.png)
 
 The link to the full datasets containing the sparsification trajectories and performance metrics are listed below. The code to sparsify models is contained in `def_net_distillation.py` and def_NN_experiment_distillation.py`, the zoo generators are uploaded in the corresponding directory. 
