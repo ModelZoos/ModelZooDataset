@@ -3,7 +3,7 @@ This repository complements the Paper "Model Zoo: A Dataset of Diverse Populatio
 ![alt text](assets/model_zoo_overview.png)
 
 # Abstract
-In the last years, neural networks have evolved from laboratory environments to the state-of-the-art for many real-world problems. Our hypothesis is that neural network models (i.e., their weights and biases) evolve on unique, smooth trajectories in weight space during training. Following, a population of such neural network models (refereed to as “model zoo”) would form topological structures in weight space. We think that the geometry, curvature and smoothness of these structures contain information about the state of training and can be reveal latent properties of individual models. With such zoos, one could investigate novel approaches for (i) model analysis, (ii) discover unknown learning dynamics, (iii) learn rich representations of such populations, or (iv) exploit the model zoos for generative modelling of neural network weights and biases. Unfortunately, the lack of standardized model zoos and available benchmarks significantly increases the friction for further research about populations of neural networks. With this work, we publish a novel dataset of model zoos containing systematically generated and diverse populations of neural network models for further research. In total the proposed model zoo dataset is based on six image datasets, consist of 24 model zoos with varying hyperparameter combinations are generated and includes 47’360 unique neural network models resulting in over 2’415’360 collected model states. Additionally, to the model zoo data we provide an in-depth analysis of the zoos and provide benchmarks for multiple downstream tasks as mentioned before.
+In the last years, neural networks have evolved from laboratory environments to the state-of-the-art for many real-world problems. Our hypothesis is that neural network models (i.e., their weights and biases) evolve on unique, smooth trajectories in weight space during training. Following, a population of such neural network models (refereed to as “model zoo”) would form topological structures in weight space. We think that the geometry, curvature and smoothness of these structures contain information about the state of training and can be reveal latent properties of individual models. With such zoos, one could investigate novel approaches for (i) model analysis, (ii) discover unknown learning dynamics, (iii) learn rich representations of such populations, or (iv) exploit the model zoos for generative modelling of neural network weights and biases. Unfortunately, the lack of standardized model zoos and available benchmarks significantly increases the friction for further research about populations of neural networks. With this work, we publish a novel dataset of model zoos containing systematically generated and diverse populations of neural network models for further research. In total the proposed model zoo dataset is based on six image datasets, consist of 27 model zoos with varying hyperparameter combinations are generated and includes 50’360 unique neural network models resulting in over 2’585’360 collected model states. Additionally, to the model zoo data we provide an in-depth analysis of the zoos and provide benchmarks for multiple downstream tasks as mentioned before.
 
 # Data
 The model zoo datasets are hosted on Zenodo. Zenodo guarantees at least 20 years of availability, provides searchable metadata and dataset DOIs.  
@@ -15,15 +15,17 @@ The `index_dict.json` contains information on where weights in the vectorized fo
 
 | Image Dataset | DOI Link to Zoo  |  
 | ----------- | ----------- |
-| MNIST (raw and prepocessed)| https://doi.org/10.5281/zenodo.6632086 |  
-| Fashion-MNIST (raw and prepocessed)| https://doi.org/10.5281/zenodo.6632104 |   
-| SVHN (raw and prepocessed)| https://doi.org/10.5281/zenodo.6632120 |  
-| USPS (raw and prepocessed)| https://doi.org/10.5281/zenodo.6633626 |  
-| Cifar10 (raw and prepocessed)| https://doi.org/10.5281/zenodo.6620868 |  
-| STL10 (raw) | https://doi.org/10.5281/zenodo.6631783 |  
-| STL10 (preprocessed) | https://doi.org/10.5281/zenodo.6634138 | 
-| CIFAR10-ResNet18 (raw, squeezed) | https://doi.org/10.5281/zenodo.6974028 |
-| CIFAR10-ResNet18 (raw, full) | Google Drive [part 1](https://drive.google.com/file/d/1f3RJn2Ku_y22TRZsrJs9sFDcqfYu8p6k/view?usp=sharing) [part 2](https://drive.google.com/file/d/1PgMd708E5jRC52on-4_hABUr0PXPBWIR/view?usp=sharing) [part 3](https://drive.google.com/file/d/1q1C1cE_gAvMZGNWzfaW2szUL_r1jNj-P/view?usp=sharing) [part 4](https://drive.google.com/file/d/1nQKu4IEDHKaT2nxiwF13iEwnQEzOvb1O/view?usp=sharing) [part 5](https://drive.google.com/file/d/1EX7KtgcrfA3EGjPrmiSvm6T4lCBSjVL6/view?usp=sharing) [part 6](https://drive.google.com/file/d/12YxDbpKX4s2-0szKnhdCFucqor-tsWWL/view?usp=sharing) [part 7](https://drive.google.com/file/d/1qF2iqOY99kx3wbJMygI-x5WsiGoRgHzd/view?usp=sharing) [part 8](https://drive.google.com/file/d/1t_xp5hKmbanWFPlqqWXs0LwZfhclJ9UK/view?usp=sharing) [part 9](https://drive.google.com/file/d/1yXaKJgiJF4EOBgHysWPHIvrr-Z3HyET4/view?usp=sharing) [part 10](https://drive.google.com/file/d/19tZuuseCjIlKcK4707OHQCA3PsbCdBz8/view?usp=sharing)|
+| MNIST CNN-s (raw and prepocessed)| https://doi.org/10.5281/zenodo.6632086 |  
+| Fashion-MNIST CNN-s (raw and prepocessed)| https://doi.org/10.5281/zenodo.6632104 |   
+| SVHN CNN-s (raw and prepocessed)| https://doi.org/10.5281/zenodo.6632120 |  
+| USPS CNN-s (raw and prepocessed)| https://doi.org/10.5281/zenodo.6633626 |  
+| Cifar10 CNN-s and CNN-l (raw and prepocessed)| https://doi.org/10.5281/zenodo.6620868 |  
+| STL10 CNN-s and CNN-l (raw) | https://doi.org/10.5281/zenodo.6631783 |  
+| STL10 CNN-s and CNN-l (preprocessed) | https://doi.org/10.5281/zenodo.6634138 | 
+| CIFAR10 ResNet-18 (raw, squeezed) | https://doi.org/10.5281/zenodo.6974028 |
+| CIFAR10 ResNet-18 (raw, full) | Google Drive [part 1](https://drive.google.com/file/d/1f3RJn2Ku_y22TRZsrJs9sFDcqfYu8p6k/view?usp=sharing) [part 2](https://drive.google.com/file/d/1PgMd708E5jRC52on-4_hABUr0PXPBWIR/view?usp=sharing) [part 3](https://drive.google.com/file/d/1q1C1cE_gAvMZGNWzfaW2szUL_r1jNj-P/view?usp=sharing) [part 4](https://drive.google.com/file/d/1nQKu4IEDHKaT2nxiwF13iEwnQEzOvb1O/view?usp=sharing) [part 5](https://drive.google.com/file/d/1EX7KtgcrfA3EGjPrmiSvm6T4lCBSjVL6/view?usp=sharing) [part 6](https://drive.google.com/file/d/12YxDbpKX4s2-0szKnhdCFucqor-tsWWL/view?usp=sharing) [part 7](https://drive.google.com/file/d/1qF2iqOY99kx3wbJMygI-x5WsiGoRgHzd/view?usp=sharing) [part 8](https://drive.google.com/file/d/1t_xp5hKmbanWFPlqqWXs0LwZfhclJ9UK/view?usp=sharing) [part 9](https://drive.google.com/file/d/1yXaKJgiJF4EOBgHysWPHIvrr-Z3HyET4/view?usp=sharing) [part 10](https://drive.google.com/file/d/19tZuuseCjIlKcK4707OHQCA3PsbCdBz8/view?usp=sharing)|
+| CIFAR100 ResNet-18 (raw, squeezed) | https://doi.org/10.5281/zenodo.6977381 |
+| CIFAR100 ResNet-18 (raw, full) | Google Drive [part 1](https://drive.google.com/file/d/18S-8LZIB4wo8Lc2tAPLLBV3CSksQ0_C7/view?usp=sharing) |
 
 
 # Accessibility
