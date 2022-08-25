@@ -3,119 +3,15 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from torch.utils.tensorboard import SummaryWriter
-from torchvision.models.resnet import ResNet, BasicBlock
-
 import numpy as np
-
+import torch.nn.functional as F
 from pathlib import Path
 
 import timeit
 
-"""
-define net
-##############################################################################
-"""
-
-
-class MLP(nn.Module):
-    def __init__(
-        self,
-        i_dim=14,
-        h_dim=[30, 15],
-        o_dim=10,
-        nlin="leakyrelu",
-        dropout=0.2,
-        init_type="uniform",
-        use_bias=True,
-    ):
-        super().__init__()
-        self.use_bias = use_bias
-        # init module list
-        self.module_list = nn.ModuleList()
-
-        # get hidden layer's list
-        # wrap h_dim in list of it's not already
-        if not isinstance(h_dim, list):
-            try:
-                h_dim = [h_dim]
-            except Exception as e:
-                print(e)
-        # add i_dim to h_dim
-        h_dim.insert(0, i_dim)
-
-        # get if bias should be used or not
-        for k in range(len(h_dim) - 1):
-            # add linear layer
-            self.module_list.append(
-                nn.Linear(h_dim[k], h_dim[k + 1], bias=self.use_bias)
-            )
-            # add nonlinearity
-            if nlin == "elu":
-                self.module_list.append(nn.ELU())
-            if nlin == "celu":
-                self.module_list.append(nn.CELU())
-            if nlin == "gelu":
-                self.module_list.append(nn.GELU())
-            if nlin == "leakyrelu":
-                self.module_list.append(nn.LeakyReLU())
-            if nlin == "relu":
-                self.module_list.append(nn.ReLU())
-            if nlin == "tanh":
-                self.module_list.append(nn.Tanh())
-            if nlin == "sigmoid":
-                self.module_list.append(nn.Sigmoid())
-            if nlin == "silu":
-                self.module_list.append(nn.SiLU())
-            if dropout > 0:
-                self.module_list.append(nn.Dropout(dropout))
-        # init output layer
-        self.module_list.append(nn.Linear(h_dim[-1], o_dim, bias=self.use_bias))
-        # normalize outputs between 0 and 1
-        # self.module_list.append(nn.Sigmoid())
-
-        # initialize weights with se methods
-        self.initialize_weights(init_type)
-
-    def initialize_weights(self, init_type):
-        # print("initialze model")
-        for m in self.module_list:
-            if type(m) == nn.Linear:
-                if init_type == "xavier_uniform":
-                    torch.nn.init.xavier_uniform_(m.weight)
-                if init_type == "xavier_normal":
-                    torch.nn.init.xavier_normal_(m.weight)
-                if init_type == "uniform":
-                    torch.nn.init.uniform_(m.weight)
-                if init_type == "normal":
-                    torch.nn.init.normal_(m.weight)
-                if init_type == "kaiming_normal":
-                    torch.nn.init.kaiming_normal_(m.weight)
-                if init_type == "kaiming_uniform":
-                    torch.nn.init.kaiming_uniform_(m.weight)
-                # set bias to some small non-zero value
-                if self.use_bias:
-                    m.bias.data.fill_(0.01)
-
-    def forward(self, x):
-        # forward prop through module_list
-        for layer in self.module_list:
-            #     print(f"layer {layer}")
-            #     print(f"input shape:: {x.shape}")
-            x = layer(x)
-            # print(f"output shape:: {x.shape}")
-        return x
-
-    def forward_activations(self, x):
-        # forward prop through module_list
-        activations = []
-        for layer in self.module_list:
-            x = layer(x)
-            activations.append(x)
-        return x, activations
-
 
 ###############################################################################
-# define net
+# define model architectures
 # ##############################################################################
 def compute_outdim(i_dim, stride, kernel, padding, dilation):
     o_dim = (i_dim + 2 * padding - dilation * (kernel - 1) - 1) / stride + 1
@@ -425,6 +321,11 @@ class CNN3(nn.Module):
 
 
 
+import torchvision
+
+from torchvision.models.resnet import ResNet, BasicBlock
+
+
 class ResNet18(ResNet):
     def __init__(
         self,
@@ -481,7 +382,6 @@ class ResNet18(ResNet):
                 pass
         return m
 
-    
 
 ###############################################################################
 # define FNNmodule
@@ -511,21 +411,7 @@ class NNmodule(nn.Module):
             torch.backends.cudnn.benchmark = False
 
         # construct model
-        if config["model::type"] == "MLP":
-
-            # calling MLP constructor
-            if self.verbosity > 0:
-                print("=> creating model MLP")
-            i_dim = config["model::i_dim"]
-            h_dim = config["model::h_dim"]
-            o_dim = config["model::o_dim"]
-            nlin = config["model::nlin"]
-            dropout = config["model::dropout"]
-            init_type = config["model::init_type"]
-            use_bias = config["model::use_bias"]
-            model = MLP(i_dim, h_dim, o_dim, nlin, dropout, init_type, use_bias)
-
-        elif config["model::type"] == "CNN":
+        if config["model::type"] == "CNN":
             # calling MLP constructor
             if self.verbosity > 0:
                 print("=> creating model CNN")
@@ -577,8 +463,13 @@ class NNmodule(nn.Module):
         # define loss function (criterion) and optimizer
         # set loss
         self.task = config.get("training::task", "classification")
+        self.logsoftmax = False
         if self.task == "classification":
-            self.criterion = nn.CrossEntropyLoss()
+            if config.get("training::loss", "nll"):
+                self.criterion = nn.NLLLoss()
+                self.logsoftmax = True
+            else:
+                self.criterion = nn.CrossEntropyLoss()
         elif self.task == "regression":
             self.criterion = nn.MSELoss(reduction="mean")
         if self.cuda:
@@ -587,6 +478,8 @@ class NNmodule(nn.Module):
         # set opimizer
         self.set_optimizer(config)
 
+        self.set_scheduler(config)
+
         self.best_epoch = None
         self.loss_best = None
 
@@ -594,6 +487,8 @@ class NNmodule(nn.Module):
     def forward(self, x):
         # compute model prediction
         y = self.model(x)
+        if self.logsoftmax:
+            y = F.log_softmax(y, dim=1)
         return y
 
     # set optimizer function - maybe we'll only use one of them anyways..
@@ -618,6 +513,20 @@ class NNmodule(nn.Module):
                 lr=config["optim::lr"],
                 weight_decay=config["optim::wd"],
                 momentum=config["optim::momentum"],
+            )
+
+    def set_scheduler(self, config):
+        if config.get("optim::scheduler", None) == None:
+            self.scheduler = None
+        elif config.get("optim::scheduler", None) == "OneCycleLR":
+            print("use onecycleLR scheduler")
+            max_lr = config["optim::lr"]
+            steps_per_epoch = config["scheduler::steps_per_epoch"]
+            self.scheduler = torch.optim.lr_scheduler.OneCycleLR(
+                optimizer=self.optimizer,
+                max_lr=max_lr,
+                epochs=config["training::epochs_train"],
+                steps_per_epoch=steps_per_epoch,
             )
 
     def save_model(self, epoch, perf_dict, path=None):
@@ -698,6 +607,9 @@ class NNmodule(nn.Module):
         loss.backward()
         # update parameters
         self.optimizer.step()
+        # scheduler step
+        if self.scheduler is not None:
+            self.scheduler.step()
         # compute correct
         correct = 0
         if self.task == "classification":
@@ -706,7 +618,7 @@ class NNmodule(nn.Module):
         return loss.item(), correct
 
     # one training epoch
-    def train(self, trainloader, epoch, idx_out=10):
+    def train_epoch(self, trainloader, epoch, idx_out=10):
         if self.verbosity > 2:
             print(f"train epoch {epoch}")
         # set model to training mode
@@ -795,7 +707,7 @@ class NNmodule(nn.Module):
             return loss.item(), correct
 
     # test epoch
-    def test(self, testloader, epoch):
+    def test_epoch(self, testloader, epoch):
         if self.verbosity > 1:
             print(f"validate at epoch {epoch}")
         # set model to eval mode
@@ -932,10 +844,10 @@ class NNmodule(nn.Module):
         for epoch in epoch_iter:
 
             # enter training loop over all batches
-            loss, accuracy = self.train(trainloader, epoch, idx_out=idx_out)
+            loss, accuracy = self.train_epoch(trainloader, epoch, idx_out=idx_out)
 
             if epoch % val_epochs == 0:
-                loss_test, accuracy_test = self.test(testloader, epoch)
+                loss_test, accuracy_test = self.test_epoch(testloader, epoch)
 
                 if loss_test < self.loss_best:
                     self.best_epoch = epoch
