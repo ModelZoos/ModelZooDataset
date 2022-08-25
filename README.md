@@ -1,4 +1,4 @@
-This repository complements the Paper "Model Zoo: A Dataset of Diverse Populations of Neural Network Models". It contains code to recreate, adapt or extend the zoos, links to the zoos, code to load the zoos and reproduce the benchmarks.
+This repository complements the Paper "Model Zoo: A Dataset of Diverse Populations of Neural Network Models". It contains code to recreate, adapt or extend the zoos, links to the zoos, code to load the zoos and reproduce the benchmarks. The vision for the dataset is to extend model zoos over time allowing the community to investigate different aspects of model populations. 
 
 ![alt text](assets/model_zoo_overview.png)
 
@@ -27,6 +27,18 @@ The `index_dict.json` contains information on where weights in the vectorized fo
 | CIFAR100 ResNet-18 (raw, squeezed) | https://doi.org/10.5281/zenodo.6977381 |
 | CIFAR100 ResNet-18 (raw, full) | Google Drive [part 1](https://drive.google.com/file/d/18S-8LZIB4wo8Lc2tAPLLBV3CSksQ0_C7/view?usp=sharing) [part 2](https://drive.google.com/file/d/1RZ-YCBKvOkjnG87057206Djz6GDKArpK/view?usp=sharing) [part 3](https://drive.google.com/file/d/1WazJ2D3zS6hIE_NXalirXvrgP_ZPvigm/view?usp=sharing) [part 4](https://drive.google.com/file/d/11RhvsLhrapPHnR3tDiVDDoEn5HgJYstO/view?usp=sharing)|
 | Tiny-Imagenet ResNet-18 (raw, squeezed) | https://doi.org/10.5281/zenodo.7023277 |
+
+# Sparsified Model Zoo Twins
+Model sparsification and distillation are an important topic to efficiently operate neural networks in production. To study sparisifaction at a population level, we introduce *sparsified model zoo twins*.  
+Re-using the populations of full models (from above), the sparsified populations contain *sparsified twins* of each of the full models. 
+Starting of the last epoch of the full zoo, sparsification with [Variational Dropout](https://arxiv.org/abs/1701.05369) generates a sparsification trajectory for each model, along which we track the performance, degree of sparsity and the sparsified checkpoint.  Sparsified model zoos add several potential use-cases. The zoos can be used to study the sparsification performance on a population level, study emerging patterns of populations of sparse models, or the relation of full models and their sparse counterparts.   
+The Figure below shows the performance of the first sparsified zoo (MNIST-seed-sparse) is already added to the collection. After 25 sparsification epochs, the models achieve on average 80% sparsity at only 2% accuracy loss.
+![MNIST Sparsified Twin Zoo](assets/MNIST_Sparse_Twin.png)
+
+The link to the full datasets containing the sparsification trajectories and performance metrics are listed below. The code to sparsify models is contained in `def_net_distillation.py` and def_NN_experiment_distillation.py`, the zoo generators are uploaded in the corresponding directory. 
+| Image Dataset | DOI Link to Zoo  |  
+| ----------- | ----------- |
+| MNIST Sparsified CNN-s (raw)| https://doi.org/10.5281/zenodo.7023335 |  
 
 
 # Accessibility
