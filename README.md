@@ -41,6 +41,8 @@ The link to the full datasets containing the sparsification trajectories and per
 | Image Dataset | DOI Link to Zoo  |  
 | ----------- | ----------- |
 | MNIST Sparsified CNN-s (raw)| https://doi.org/10.5281/zenodo.7023335 |  
+| SVHN Sparsified CNN-s (raw)| https://doi.org/10.5281/zenodo.7027566 |  
+
 
 
 # Accessibility
