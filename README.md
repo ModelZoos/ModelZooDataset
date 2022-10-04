@@ -1,4 +1,4 @@
-This repository complements the Paper "Model Zoo: A Dataset of Diverse Populations of Neural Network Models". It contains code to recreate, adapt or extend the zoos, links to the zoos, code to load the zoos and reproduce the benchmarks. The vision for the dataset is to extend model zoos over time allowing the community to investigate different aspects of model populations. 
+This repository complements the Paper "Model Zoos: A Dataset of Diverse Populations of Neural Network Models". It contains code to recreate, adapt or extend the zoos, links to the zoos, code to load the zoos and reproduce the benchmarks. The vision for the dataset is to extend model zoos over time allowing the community to investigate different aspects of model populations. 
 
 ![alt text](assets/model_zoo_overview.png)
 
