@@ -1,4 +1,4 @@
-This repository complements the Paper "Model Zoos: A Dataset of Diverse Populations of Neural Network Models". It contains code to recreate, adapt or extend the zoos, links to the zoos, code to load the zoos and reproduce the benchmarks. The vision for the dataset is to extend model zoos over time allowing the community to investigate different aspects of model populations. 
+This repository complements the Paper "Model Zoos: A Dataset of Diverse Populations of Neural Network Models". The paper can be found [here](https://arxiv.org/abs/2209.14764). The repository contains code to recreate, adapt or extend the zoos, links to the zoos, code to load the zoos and reproduce the benchmarks. The vision for the dataset is to extend model zoos over time allowing the community to investigate different aspects of model populations. 
 
 ![alt text](assets/model_zoo_overview.png)
 
@@ -63,3 +63,21 @@ A notebook with code to replicate the benchmark numbers from the paper can be fo
 
 # License
 The model zoos are licensed under the Creative Commons Attribution 4.0 International license (CC-BY 4.0).
+
+
+Get in touch!
+====
+If there are any questions, reach out to us! We'll respond to issues here, or via email `konstantin.schuerholt@unisg.ch`. 
+
+Citation
+====
+If you want to cite this work, please use 
+```
+@inproceedings{schurholtModelZoosDataset2022,
+  title = {Model Zoos: A Dataset of Diverse Populations of Neural Network Models},
+  booktitle = {Thirty-Sixth Conference on Neural Information Processing Systems (NeurIPS) Track on Datasets and Benchmarks},
+  author = {Sch{\"u}rholt, Konstantin and Taskiran, Diyar and Knyazev, Boris and Gir{\'o}-i-Nieto, Xavier and Borth, Damian},
+  year = {2022},
+  month = sep,
+}
+```
