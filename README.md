@@ -29,6 +29,7 @@ The `index_dict.json` contains information on where weights in the vectorized fo
 | CIFAR100 ResNet-18 (raw, squeezed) | https://doi.org/10.5281/zenodo.6977381 |
 | CIFAR100 ResNet-18 (raw, full) | Google Drive [part 1](https://drive.google.com/file/d/18S-8LZIB4wo8Lc2tAPLLBV3CSksQ0_C7/view?usp=sharing) [part 2](https://drive.google.com/file/d/1RZ-YCBKvOkjnG87057206Djz6GDKArpK/view?usp=sharing) [part 3](https://drive.google.com/file/d/1WazJ2D3zS6hIE_NXalirXvrgP_ZPvigm/view?usp=sharing) [part 4](https://drive.google.com/file/d/11RhvsLhrapPHnR3tDiVDDoEn5HgJYstO/view?usp=sharing) [part 5](https://drive.google.com/file/d/1NY4cTi9U2cqtQ5wOnhXtESzlUco_UnRZ/view?usp=sharing) [part 6](https://drive.google.com/file/d/1TnfPYZ93gi1O89S_dCpzDf6rxSYr6HSt/view?usp=sharing) [part 7](https://drive.google.com/file/d/1S3QfxGE_jcOp0z1zYfdqAR_ntfnDgVHI/view?usp=sharing) [part 8](https://drive.google.com/file/d/15cKtzWOgZcR3RReRvGtgX5vdKUWYWnIs/view?usp=sharing) [part 9](https://drive.google.com/file/d/1PRt4YcJqO_rVztsqfm_OgZV2T8Cn52yU/view?usp=sharing) [part 10](https://drive.google.com/file/d/1206tvBRACLnQks9UnA52xz1CPOvDGfv-/view?usp=sharing)|
 | Tiny-Imagenet ResNet-18 (raw, squeezed) | https://doi.org/10.5281/zenodo.7023277 |
+| EuroSAT CNN-s (raw) | https://doi.org/10.5281/zenodo.8141666 |
 
 # Sparsified Model Zoo Twins
 Model sparsification and distillation are an important topic to efficiently operate neural networks in production. To study sparisifaction at a population level, we introduce *sparsified model zoo twins*.  
@@ -42,6 +43,7 @@ The link to the full datasets containing the sparsification trajectories and per
 | ----------- | ----------- |
 | MNIST Sparsified CNN-s (raw)| https://doi.org/10.5281/zenodo.7023335 |  
 | SVHN Sparsified CNN-s (raw)| https://doi.org/10.5281/zenodo.7027566 |  
+| EuroSAT CNN-s (raw) | https://doi.org/10.5281/zenodo.8141666 |
 
 
 
