@@ -24,11 +24,8 @@ The `index_dict.json` contains information on where weights in the vectorized fo
 | Cifar10 CNN-s and CNN-l (raw and prepocessed)| https://doi.org/10.5281/zenodo.6620868 |  
 | STL10 CNN-s and CNN-l (raw) | https://doi.org/10.5281/zenodo.6631783 |  
 | STL10 CNN-s and CNN-l (preprocessed) | https://doi.org/10.5281/zenodo.6634138 | 
-| CIFAR10 ResNet-18 (raw, squeezed) | https://doi.org/10.5281/zenodo.6974028 |
 | CIFAR10 ResNet-18 (raw, full) | https://ai.unisg.ch/files/tar_files/tune_zoo_cifar10_resnet18_kaiming_uniform.tar |
-| CIFAR100 ResNet-18 (raw, squeezed) | https://doi.org/10.5281/zenodo.6977381 |
 | CIFAR100 ResNet-18 (raw, full) | https://ai.unisg.ch/files/tar_files/tune_zoo_cifar100_resnet18_kaiming_uniform.tar |
-| Tiny-Imagenet ResNet-18 (raw, squeezed) | https://doi.org/10.5281/zenodo.7023277 |
 | EuroSAT CNN-s (raw) | https://doi.org/10.5281/zenodo.8141666 |
 
 # Sparsified Model Zoo Twins
